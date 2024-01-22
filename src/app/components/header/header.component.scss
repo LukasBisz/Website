@@ -9,7 +9,7 @@
 }
 
 .navbar{
-    width: 450px;
+    width: 550px;
     margin: 0;
     padding: 0;
     display: inline-block;
@@ -18,11 +18,13 @@
 }
 
 li{
-    display: inline-block;
+    
     padding-left: 20px;
     padding-right: 20px;
     font-size: 50px;
     justify-content: end;
+    float: right;
+    list-style-type: none;
 }
 
  .navbar-item{
