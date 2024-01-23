@@ -43,7 +43,7 @@ export class AuthService {
     this.router.navigateByUrl('/');
   }
 
-  guard() {
+  setSession() {
     let session = localStorage.getItem('session');
     if (session) {
       session = JSON.parse(session);
