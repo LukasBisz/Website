@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +20,7 @@ export class AuthService {
       password: '321',
     },
   ];
+  sessionSubject: Subject<any> = new Subject();
   session: any;
   constructor(private router: Router) {}
 
@@ -29,22 +31,24 @@ export class AuthService {
     if (user) {
       this.session = user;
       localStorage.setItem('session', JSON.stringify(this.session));
+      this.sessionSubject.next(user);
     }
 
     return user;
   }
 
   logout() {
-    this.session = undefined;
+    this.sessionSubject.next(null);
     localStorage.removeItem('session');
     this.router.navigateByUrl('/');
   }
 
-  guard(){
-      let session = localStorage.getItem('session');
+  guard() {
+    let session = localStorage.getItem('session');
     if (session) {
       session = JSON.parse(session);
     }
-
-    this.session = session;}
+    this.sessionSubject.next(session);
+    this.session = session;
+  }
 }

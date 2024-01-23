@@ -9,7 +9,7 @@
 }
 
 .navbar{
-    width: 550px;
+    width: 700px;
     margin: 0;
     padding: 0;
     display: inline-block;
@@ -21,7 +21,7 @@ li{
     
     padding-left: 20px;
     padding-right: 20px;
-    font-size: 50px;
+    font-size: 40px;
     justify-content: end;
     float: right;
     list-style-type: none;
@@ -36,5 +36,4 @@ li{
 
 .navbar-item-active{
     color: white;
-
 }
