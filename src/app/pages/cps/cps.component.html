@@ -1,0 +1,13 @@
+<div class="cps">
+  <button class="clicker" (click)="startCps()" [disabled]="countdown == 0">
+    click here
+  </button>
+  <div class="output">
+    <div class="counter">{{ count }}</div>
+    <div class="countdown">{{ countdown / 100 }}</div>
+    <div>{{ cps() }}</div>
+    @if (countdown == 0) {
+    <button class="reset" (click)="reset()">restart</button>
+    }
+  </div>
+</div>
