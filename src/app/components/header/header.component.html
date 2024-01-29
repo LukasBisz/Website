@@ -1,52 +1,64 @@
 <header>
-    <div class="header">
-        <ul class="navbar">
-            @if (session) {
-            <li>
-                <a class="navbar-item"
-                (click)="logout()"
-                routerLink=""
-                routerLinkActive="navbar-item-active"
-                >Logout</a>
-            </li>
-            }
-            @if (!session) {
-            <li>
-                <a class="navbar-item" 
-                routerLink="login"
-                routerLinkActive="navbar-item-active"
-                >Login</a>
-            </li>
-            }
-            <li>
-                <a class="navbar-item" 
-                href="https://github.com/LukasBisz"
-                target="_blank"
-                >Github</a>
-            </li>
-            @if (session) {
-                <li>
-                    <a class="navbar-item" 
-                    routerLink="" 
-                    routerLinkActive="navbar-item-active"
-                    >test2</a>
-                </li>
-                }
-            @if (session) {
-            <li>
-                <a class="navbar-item" 
-                routerLink="cps" 
-                routerLinkActive="navbar-item-active"
-                >CPS Tester</a>
-            </li>
-            }
-            <li>
-                <a class="navbar-item" 
-                routerLink="" 
-                routerLinkActive="navbar-item-active"
-                >Home</a>
-            </li>
-        </ul>
-    </div>
-
+  <div class="header">
+    <ul class="navbar">
+      @if (session) {
+      <li>
+        <a class="navbar-item" (click)="logout()" routerLink="">Logout</a>
+      </li>
+      } @if (!session) {
+      <li>
+        <a
+          class="navbar-item"
+          routerLink="login"
+          routerLinkActive="navbar-item-active"
+          >Login</a
+        >
+      </li>
+      }
+      <li>
+        <a
+          class="navbar-item"
+          href="https://github.com/LukasBisz"
+          target="_blank"
+          >Github</a
+        >
+      </li>
+      @if (session) {
+      <li>
+        <a
+          class="navbar-item"
+          routerLink="/tic-tac-toe"
+          routerLinkActive="navbar-item-active"
+          >Tic-Tac-Toe</a
+        >
+      </li>
+      } @if (session) {
+      <li>
+        <a
+          class="navbar-item"
+          routerLink="cps"
+          routerLinkActive="navbar-item-active"
+          >CPS Tester</a
+        >
+      </li>
+      } @if (session) {
+      <li>
+        <a
+          class="navbar-item"
+          routerLink="/dashboard"
+          routerLinkActive="navbar-item-active"
+          >Dashboard</a
+        >
+      </li>
+      }
+      <li>
+        <a
+          class="navbar-item"
+          routerLink="/home"
+          routerLinkActive="navbar-item-active"
+          >Home</a
+        >
+      </li>
+    </ul>
+  </div>
 </header>

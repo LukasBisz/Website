@@ -37,16 +37,14 @@ export class CpsComponent {
   }
 
   cps(): any {
-    var Calcualtion = this.count / 5
+    var Calcualtion = this.count / 5;
     //if (this.timerActiv == true)
     return Calcualtion;
   }
 
   reset(): any {
-    this.count = 0 
-    this.countdown = 500
-    this.timerActiv = false
-    
-    
-  } 
+    this.count = 0;
+    this.countdown = 500;
+    this.timerActiv = false;
+  }
 }
