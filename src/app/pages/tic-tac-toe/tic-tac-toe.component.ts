@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { max, min } from 'rxjs';
 
 @Component({
   selector: 'app-tic-tac-toe',
@@ -10,10 +9,6 @@ import { max, min } from 'rxjs';
 })
 export class TicTacToeComponent implements OnInit {
   ngOnInit(): void {
-    console.log(this.board.length);
-    console.log(this.board[0].length);
-    console.log(this.board[0][2]);
-    console.log(this.board[0][0] === '');
     console.log(this.randomNum());
   }
 
@@ -30,8 +25,15 @@ export class TicTacToeComponent implements OnInit {
   }
 
   clickTile(x: number, y: number) {
-    console.log(x,y)
-    
-
+    if (this.board[y][x] === 'X' || this.board[y][x] === 'O') {
+      return;
+    }
+    this.board[y][x] = 'X';
+    console.log(x, y);
   }
+
+
+
+
+  
 }

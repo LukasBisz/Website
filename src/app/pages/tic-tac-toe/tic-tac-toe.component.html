@@ -2,10 +2,9 @@
   <div class="board">
     @for (row of board; track row; let y = $index) {
     <div class="row">
-      {{ y }}
       @for (tile of row; track tile; let x = $index ) {
       <div class="tile" (click)="clickTile(x, y)">
-        {{ x }}
+        {{ tile }}
       </div>
       }
     </div>
