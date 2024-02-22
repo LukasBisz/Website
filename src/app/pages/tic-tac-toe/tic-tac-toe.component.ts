@@ -142,7 +142,23 @@ export class TicTacToeComponent implements OnInit {
     this.playerTurn = true
   }
 
-  mediumAi() {}
-
-  hardAi() {}
+  mediumAi() {
+    if (this.turnCount > 8) {
+      return;
+    }
+    const position = this.aiCalculations.calculationMedium(this.board);
+    const y = position[0];
+    const x = position[1];
+    console.log(this.aiCalculations.calculationMedium(this.board));
+    this.board[y][x] = this.aiSymbol;
+    this.turnCount++;
+    if (this.checkDraw()) {
+      this.draw = true;
+    }
+    if (this.checkWin(this.aiSymbol)) {
+      this.winner = 'Lost';
+      return;
+    }
+    this.playerTurn = true;
+  }
 }
