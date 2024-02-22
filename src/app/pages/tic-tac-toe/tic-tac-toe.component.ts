@@ -95,9 +95,16 @@ export class TicTacToeComponent implements OnInit {
       this.winner = 'Won';
       return;
     }
-    this.playerTurn = false
+  checkDifficulty() {
+    switch (this.selectedDifficulty) {
+      case 'Easy':
     this.easyAi();
-    //Todo add non fixed difficulty
+        break;
+
+      case 'Medium':
+        this.mediumAi();
+        break;
+    }
   }
 
   checkWin(symbol: string): any {
