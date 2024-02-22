@@ -1,4 +1,11 @@
 <div class="ticTacToe">
+  <select [(ngModel)]="selectedDifficulty" (change)="reset()">
+    <option value="Easy">Easy</option>
+    <option value="Medium">Medium</option>
+    <option value="Hard">Hard</option>
+  </select>
+  <button class="X">❌</button>
+  <button class="O" (click)="choosePlayerSymbol()">⭕</button>
   {{ winner }}
   {{ draw }}
   <div class="board">
