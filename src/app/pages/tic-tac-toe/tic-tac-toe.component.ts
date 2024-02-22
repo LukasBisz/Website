@@ -14,8 +14,10 @@ export class TicTacToeComponent implements OnInit {
   turnCount: number = 0;
   winner?: string;
   draw: boolean = false;
+  playerTurn: boolean = true;
   playerSymbol: string = '❌';
   aiSymbol: string = '⭕';
+  selectedDifficulty: string = 'Medium';
 
   board: string[][] = [
     ['', '', ''],
@@ -93,21 +95,28 @@ export class TicTacToeComponent implements OnInit {
   }
 
   clickTile(x: number, y: number) {
-    if (!this.playerTurn){ 
-      return
+    if (!this.playerTurn) {
+      return;
+    }
+    if (this.turnCount > 8) {
+      return;
     }
     if (this.board[y][x] === '❌' || this.board[y][x] === '⭕') {
       return;
     }
-    this.board[y][x] = '❌';
+    this.board[y][x] = this.playerSymbol;
     this.turnCount++;
+    this.playerTurn = false;
     if (this.checkDraw()) {
       this.draw = true;
     }
-    if (this.checkWin('❌')) {
+    if (this.checkWin(this.playerSymbol)) {
       this.winner = 'Won';
       return;
     }
+    this.checkDifficulty();
+  }
+
   checkDifficulty() {
     switch (this.selectedDifficulty) {
       case 'Easy':
