@@ -71,12 +71,16 @@ export class TicTacToeComponent implements OnInit {
     return number;
   }
 
-  chooseBeginner() {
-    const beginner = this.randomNum(0, 2);
-    if (beginner === 1) {
-      this.playerTurn = false
-      this.easyAi();
-    } else return;
+  reset() {
+    this.turnCount = 0;
+    this.playerTurn = true;
+    this.playerSymbol = '❌';
+    this.aiSymbol = '⭕';
+    this.board = [
+      ['', '', ''],
+      ['', '', ''],
+      ['', '', ''],
+    ];
   }
 
   clickTile(x: number, y: number) {
