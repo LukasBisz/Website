@@ -1,16 +1,15 @@
-import { Component, OnInit, numberAttribute } from '@angular/core';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { AiCalculationsService } from '../../services/ai-calculations.service';
 
 @Component({
   selector: 'app-tic-tac-toe',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './tic-tac-toe.component.html',
   styleUrl: './tic-tac-toe.component.scss',
 })
-export class TicTacToeComponent implements OnInit {
-  ngOnInit(): void {
-    this.chooseBeginner();
-  }
+export class TicTacToeComponent {
   turnCount: number = 0;
   winner?: string;
   draw: boolean = false;
@@ -68,6 +67,8 @@ export class TicTacToeComponent implements OnInit {
     ],
   ];
 
+  constructor(private aiCalculations: AiCalculationsService) {}
+
   randomNum(max: number, min: number): number {
     var random = Math.random() * (max - min) + min;
     var number = Math.floor(random);
@@ -120,7 +121,7 @@ export class TicTacToeComponent implements OnInit {
   checkDifficulty() {
     switch (this.selectedDifficulty) {
       case 'Easy':
-    this.easyAi();
+        this.easyAi();
         break;
 
       case 'Medium':
@@ -149,7 +150,7 @@ export class TicTacToeComponent implements OnInit {
   }
 
   checkDraw() {
-  return this.turnCount > 8 && !this.checkWin('❌') && !this.checkWin('⭕');
+    return this.turnCount > 8 && !this.checkWin('❌') && !this.checkWin('⭕');
   }
 
   easyAi() {
@@ -162,13 +163,16 @@ export class TicTacToeComponent implements OnInit {
       this.easyAi();
       return;
     }
-    this.board[y][x] = '⭕';
+    this.board[y][x] = this.aiSymbol;
     this.turnCount++;
-    if (this.checkWin('⭕')) {
+    if (this.checkDraw()) {
+      this.draw = true;
+    }
+    if (this.checkWin(this.aiSymbol)) {
       this.winner = 'Lost';
       return;
     }
-    this.playerTurn = true
+    this.playerTurn = true;
   }
 
   mediumAi() {
