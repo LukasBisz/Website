@@ -14,7 +14,8 @@ export class TicTacToeComponent implements OnInit {
   turnCount: number = 0;
   winner?: string;
   draw: boolean = false;
-  playerTurn: boolean = true
+  playerSymbol: string = '❌';
+  aiSymbol: string = '⭕';
 
   board: string[][] = [
     ['', '', ''],
@@ -69,6 +70,14 @@ export class TicTacToeComponent implements OnInit {
     var random = Math.random() * (max - min) + min;
     var number = Math.floor(random);
     return number;
+  }
+
+  choosePlayerSymbol() {
+    this.playerSymbol = '⭕';
+    this.aiSymbol = '❌';
+    this.playerTurn = false;
+    this.checkDifficulty();
+    console.log(this.playerSymbol);
   }
 
   reset() {
