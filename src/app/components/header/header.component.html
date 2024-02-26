@@ -1,11 +1,11 @@
 <header>
   <div class="header">
     <ul class="navbar">
-      @if (session) {
+      @if (user) {
       <li>
         <a class="navbar-item" (click)="logout()" routerLink="">Logout</a>
       </li>
-      } @if (!session) {
+      } @if (!user) {
       <li>
         <a
           class="navbar-item"
@@ -48,7 +48,7 @@
           >Games</a
         >
       </li>
-      @if (session) {
+      @if (user) {
       <li>
         <a
           class="navbar-item"

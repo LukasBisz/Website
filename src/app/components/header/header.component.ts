@@ -10,14 +10,14 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {
-  session: any;
+  user: any;
   constructor(private authservice: AuthService) {
-    authservice.sessionSubject.subscribe({
-      next: (u) => (this.session = u),
+    authservice.userSubject.subscribe({
+      next: (u) => (this.user = u),
     });
   }
   ngOnInit(): void {
-    this.authservice.setSession();
+    this.authservice.setUser();
   }
 
   logout() {

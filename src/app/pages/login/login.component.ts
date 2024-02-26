@@ -28,15 +28,9 @@ export class LoginComponent {
   ) {}
 
   login() {
-    let user = this.authservice.login(
+    this.authservice.login(
       this.loginForm.value.username,
       this.loginForm.value.password
     );
-
-    if (!user) {
-      alert('Invalid Username or Password');
-    } else {
-      this.router.navigateByUrl('/dashboard');
-    }
   }
 }

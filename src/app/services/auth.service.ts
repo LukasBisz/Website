@@ -1,56 +1,59 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from 'firebase/auth';
+import { initializeApp } from 'firebase/app';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  users: any[] = [
-    {
-      uid: 1,
-      name: 'Lukas',
-      username: 'lukas',
-      password: '123',
-    },
-    {
-      uid: 2,
-      name: 'Jonas',
-      username: 'jonas',
-      password: '321',
-    },
-  ];
-  sessionSubject: Subject<any> = new Subject();
-  session: any;
-  constructor(private router: Router) {}
+  userSubject: Subject<any> = new Subject();
+  user: any;
+  constructor(private router: Router) {
+    initializeApp(environment.firebase);
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      this.userSubject.next(user);
+      this.user = user;
+    });
+  }
 
   login(username: string, password: string) {
-    const user = this.users.find(
-      (u) => u.username === username && u.password === password
-    );
-    if (user) {
-      this.session = user;
-      localStorage.setItem('session', JSON.stringify(this.session));
-      this.sessionSubject.next(user);
-    }
-
-    return user;
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, username + '@login.tld', password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        this.router.navigateByUrl('/dashboard');
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        if (errorCode == 'auth/invalid-credential') {
+          alert('Invalid Username or Password');
+        } else {
+          alert('Login failed');
+        }
+      });
   }
 
   logout() {
-    this.sessionSubject.next(null);
-    localStorage.removeItem('session');
+    const auth = getAuth();
+    auth.signOut();
     this.router.navigateByUrl('/home');
   }
 
-  setSession() {
+  setUser() {
     let session = localStorage.getItem('session');
     if (session) {
       session = JSON.parse(session);
     }
-    this.sessionSubject.next(session);
-    this.session = session;
+    this.userSubject.next(session);
+    this.user = session;
   }
 }
-
-
