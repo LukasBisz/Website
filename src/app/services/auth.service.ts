@@ -40,7 +40,7 @@ export class AuthService {
   logout() {
     this.sessionSubject.next(null);
     localStorage.removeItem('session');
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/home');
   }
 
   setSession() {
@@ -52,3 +52,5 @@ export class AuthService {
     this.session = session;
   }
 }
+
+
