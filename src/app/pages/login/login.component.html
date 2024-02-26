@@ -1,7 +1,7 @@
 <body>
   <div class="wrapper">
     <h1>Login</h1>
-    <div class="login" [formGroup]="loginForm">
+    <form class="login" (ngSubmit)="login()" [formGroup]="loginForm">
       <div class="input-box">
         <label for="uname">Username</label>
         <input
@@ -44,14 +44,9 @@
         </svg>
       </div>
 
-      <button
-        type="submit"
-        class="submit-btn"
-        (click)="login()"
-        [disabled]="loginForm.invalid"
-      >
+      <button type="submit" class="submit-btn" [disabled]="loginForm.invalid">
         Login
       </button>
-    </div>
+    </form>
   </div>
 </body>
