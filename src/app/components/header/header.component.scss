@@ -1,7 +1,9 @@
 .header {
-  background-color: black;
-  height: 112px;
-  color: aqua;
+  position: fixed;
+  width: 100%;
+  background-color: transparent;
+  //background-color: #201e1e;
+  height: 77px;
   display: flex;
   justify-content: right;
 }
@@ -10,26 +12,26 @@
   width: 100%;
   margin: 0;
   padding: 0;
-  display: inline-block;
-  line-height: 100px;
+  display: flex;
+  justify-content: right;
+  flex-direction: row-reverse;
 }
 
 li {
-  padding-left: 20px;
-  padding-right: 20px;
-  font-size: 40px;
+  margin: 15px;
+  font-size: 1.4em;
   justify-content: end;
   float: right;
   list-style-type: none;
 }
 
 .navbar-item {
-  color: aqua;
+  color: white;
   text-decoration: none;
   cursor: pointer;
   user-select: none;
 }
 
 .navbar-item-active {
-  color: white;
+  color: aqua;
 }
