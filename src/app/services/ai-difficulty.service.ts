@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class AiCalculationsService {
-  calculationMedium(board: string[][]): number[] {
+export class AiDifficultyService {
+  medium(board: string[][]): number[] {
     // check if win is possible
     for (let i = 0; i < 3; i++) {
       // row & column

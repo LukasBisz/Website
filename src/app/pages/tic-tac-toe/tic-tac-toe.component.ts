@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AiCalculationsService } from '../../services/ai-calculations.service';
+import { AiDifficultyService } from '../../services/ai-difficulty.service';
 
 @Component({
   selector: 'app-tic-tac-toe',
@@ -67,7 +67,7 @@ export class TicTacToeComponent {
     ],
   ];
 
-  constructor(private aiCalculations: AiCalculationsService) {}
+  constructor(private aiDifficulty: AiDifficultyService) {}
 
   randomNum(max: number, min: number): number {
     var random = Math.random() * (max - min) + min;
@@ -179,10 +179,10 @@ export class TicTacToeComponent {
     if (this.turnCount > 8) {
       return;
     }
-    const position = this.aiCalculations.calculationMedium(this.board);
+    const position = this.aiDifficulty.medium(this.board);
     const y = position[0];
     const x = position[1];
-    console.log(this.aiCalculations.calculationMedium(this.board));
+    console.log(this.aiDifficulty.medium(this.board));
     this.board[y][x] = this.aiSymbol;
     this.turnCount++;
     if (this.checkDraw()) {
