@@ -1,12 +1,10 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CpsComponent } from './pages/cps/cps.component';
 import { TicTacToeComponent } from './pages/tic-tac-toe/tic-tac-toe.component';
 import { GamesComponent } from './pages/games/games.component';
 import { CvComponent } from './pages/cv/cv.component';
-import { authGuard } from './guard/auth.guard';
 import { AuthGuard } from '@angular/fire/auth-guard';
 
 export const routes: Routes = [
@@ -18,11 +16,6 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard],
   },
   { path: 'cps', component: CpsComponent },
   {
@@ -38,4 +31,5 @@ export const routes: Routes = [
     component: CvComponent,
     canActivate: [AuthGuard],
   },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
