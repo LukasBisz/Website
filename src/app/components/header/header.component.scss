@@ -32,6 +32,10 @@ li {
   user-select: none;
 }
 
+.navbar-item:hover{
+  color: #40E0D0;
+}
+
 .navbar-item-active {
-  color: aqua;
+  color: #40E0D0;
 }

@@ -40,6 +40,16 @@
           </svg>
         </a>
       </li>
+      @if (user) {
+      <li>
+        <a
+          class="navbar-item"
+          routerLink="/cv"
+          routerLinkActive="navbar-item-active"
+          >Resumé
+        </a>
+      </li>
+      }
       <li>
         <a
           class="navbar-item"
@@ -48,16 +58,6 @@
           >Games</a
         >
       </li>
-      @if (user) {
-      <li>
-        <a
-          class="navbar-item"
-          routerLink="/dashboard"
-          routerLinkActive="navbar-item-active"
-          >Dashboard</a
-        >
-      </li>
-      }
       <li>
         <a
           class="navbar-item"
