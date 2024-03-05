@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -7,4 +7,67 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {}
+export class HomeComponent implements AfterViewInit {
+  text: string[] = ["Hey, i'm Lukas", 'Hey, ich bin Lukas'];
+  color: string[] = ['red', 'yellow'];
+  currentIndex: number = 0;
+  sleepTime: number = 100;
+
+  sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  async loop() {
+    const elementText = document.getElementById('typewriter');
+    const elementCursor = document.getElementById('cursor');
+
+    if (!elementText || !elementCursor) {
+      return;
+    }
+
+    elementCursor.classList.add('idle');
+
+    await this.sleep(this.sleepTime * 20);
+
+    elementCursor.classList.remove('idle');
+
+    while (true) {
+      let curWord = this.text[this.currentIndex];
+      elementText.style.color = this.color[this.currentIndex];
+
+      //typing
+      for (let i = 0; i < curWord.length; i++) {
+        elementText.innerText = curWord.substring(0, i + 1);
+        await this.sleep(this.sleepTime);
+      }
+
+      elementCursor.classList.add('idle');
+
+      await this.sleep(this.sleepTime * 35);
+
+      elementCursor.classList.remove('idle');
+
+      //remover
+      for (let i = curWord.length; i > 0; i--) {
+        elementText.innerText = curWord.substring(0, i - 1);
+        await this.sleep(this.sleepTime - 50);
+      }
+
+      elementCursor.classList.add('idle');
+
+      await this.sleep(this.sleepTime * 20);
+
+      elementCursor.classList.remove('idle');
+
+      if (this.currentIndex === this.text.length - 1) {
+        this.currentIndex = 0;
+      } else {
+        this.currentIndex++;
+      }
+    }
+  }
+
+  ngAfterViewInit(): void {
+    this.loop();
+  }
+}
