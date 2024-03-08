@@ -21,6 +21,7 @@ body {
   font-size: clamp(1rem, 3vw + 1rem, 4rem);
   display: inline;
   float: left;
+  z-index: 999;
 }
 
 .cursor {
@@ -57,7 +58,6 @@ body {
   transform: translateY(3rem);
   animation: fadeInUp 2s ease forwards;
   animation-delay: 3.71s;
-  margin-top: 20px;
 }
 
 @keyframes fadeInUp {
@@ -88,7 +88,7 @@ body {
   background-color: black;
   transform: scale(1.4);
   box-shadow: 0 0 30px 20px rgba(255, 254, 249, 0.3),
-    inset 0 0 20px 5px rgba(255, 254, 249, 0.3);
+        inset 0 0 20px 5px rgba(255, 254, 249, 0.3);
 }
 
 .comets {
@@ -107,6 +107,7 @@ body {
   opacity: 0.7;
   animation: falling 10s 0s infinite;
   animation-timing-function: ease-in;
+  z-index: 1;
 }
 
 #comets i:nth-child(1) {
