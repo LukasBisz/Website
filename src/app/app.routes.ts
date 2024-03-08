@@ -6,6 +6,7 @@ import { TicTacToeComponent } from './pages/tic-tac-toe/tic-tac-toe.component';
 import { GamesComponent } from './pages/games/games.component';
 import { CvComponent } from './pages/cv/cv.component';
 import { AuthGuard } from '@angular/fire/auth-guard';
+import { PrivacyComponent } from './pages/privacy/privacy.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -30,6 +31,10 @@ export const routes: Routes = [
     path: 'cv',
     component: CvComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'privacy',
+    component: PrivacyComponent,
   },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
