@@ -2,7 +2,187 @@ body {
   width: 100%;
   height: 100vh;
   font-size: 100px;
+}
+
+.wrapper {
+  height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.typewriter {
+  position: relative;
+  margin: 50px;
+}
+
+.text {
+  font-size: clamp(1rem, 3vw + 1rem, 4rem);
+  display: inline;
+  float: left;
+}
+
+.cursor {
+  font-size: clamp(1rem, 3vw + 1rem, 4rem);
+  color: #faf9f6;
+  display: inline;
+  float: left;
+}
+
+.idle {
+  animation: blinker 1s normal infinite;
+}
+
+@keyframes blinker {
+  0% {
+    opacity: 1;
+  }
+  49% {
+    opacity: 1;
+  }
+  51% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.welcome {
+  color: #faf9f6;
+  font-size: 2rem;
+  font-weight: 400;
+  opacity: 0;
+  transform: translateY(3rem);
+  animation: fadeInUp 2s ease forwards;
+  animation-delay: 3.71s;
+  margin-top: 20px;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hint {
+  color: #7c7b7b;
+  font-weight: 400;
+  font-size: 1rem;
+  opacity: 0;
+  transform: translateY(3rem);
+  animation: fadeInUp 2s ease forwards;
+  animation-delay: 5s;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.planet {
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  height: 150px;
+  border-radius: 80% 80% 0 0;
+  background-color: black;
+  transform: scale(1.4);
+  box-shadow: 0 0 30px 20px rgba(255, 254, 249, 0.3),
+    inset 0 0 20px 5px rgba(255, 254, 249, 0.3);
+}
+
+.comets {
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#comets i {
+  width: 250px;
+  height: 150px;
+  position: fixed;
+  border-radius: 5% 40% 70%;
+  border: 1px solid #333;
+  background-color: #fff;
+  opacity: 0.7;
+  animation: falling 10s 0s infinite;
+  animation-timing-function: ease-in;
+}
+
+#comets i:nth-child(1) {
+  left: 50vw;
+  height: 73px;
+  width: 3px;
+  background-color: #fff;
+}
+#comets i:nth-child(2) {
+  opacity: 0;
+  animation: falling2 6s 1s infinite;
+  left: 30vw;
+  height: 70px;
+  width: 4px;
+  background-color: #fff;
+}
+#comets i:nth-child(3) {
+  opacity: 0;
+  height: 11px;
+  width: 3px;
+  animation: falling3 8s 3s infinite;
+  left: 10vw;
+  background-color: #fff;
+}
+
+@keyframes falling {
+  0% {
+    transform: translate3d(100px, 0px, 0px) rotate(160deg);
+  }
+
+  3% {
+    transform: translate3d(450px, 900px, 0) rotate(160deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(450px, 900px, 0) rotate(160deg);
+    opacity: 0;
+  }
+}
+
+@keyframes falling2 {
+  0% {
+    transform: translate3d(100px, 0, 0) rotate(130deg);
+  }
+
+  1% {
+    opacity: 0.7;
+  }
+
+  15% {
+    transform: translate3d(800px, 580px, 0) rotate(130deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate3d(800px, 680px, 0) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes falling3 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(150deg);
+  }
+
+  1% {
+    opacity: 0.7;
+  }
+
+  10% {
+    transform: translate3d(430px, 640px, 0) rotate(150deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate3d(430px, 640px, 0) rotate(150deg);
+    opacity: 0;
+  }
 }
