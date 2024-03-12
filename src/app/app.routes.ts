@@ -5,8 +5,15 @@ import { CpsComponent } from './pages/cps/cps.component';
 import { TicTacToeComponent } from './pages/tic-tac-toe/tic-tac-toe.component';
 import { GamesComponent } from './pages/games/games.component';
 import { CvComponent } from './pages/cv/cv.component';
-import { AuthGuard } from '@angular/fire/auth-guard';
+import {
+  AuthGuard,
+  redirectLoggedInTo,
+  redirectUnauthorizedTo,
+} from '@angular/fire/auth-guard';
 import { PrivacyComponent } from './pages/privacy/privacy.component';
+
+const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
+const redirectUnauthorizedToHome = () => redirectUnauthorizedTo(['home']);
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -17,6 +24,8 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectLoggedInToHome },
   },
   { path: 'cps', component: CpsComponent },
   {
@@ -31,6 +40,7 @@ export const routes: Routes = [
     path: 'cv',
     component: CvComponent,
     canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToHome },
   },
   {
     path: 'privacy',
