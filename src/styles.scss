@@ -6,6 +6,7 @@ body {
   font-style: normal;
   background-image: url(/assets/stars_bg.png),
     linear-gradient(180deg, black 0%, #0f0e2e 100%);
+    z-index: -100;
 }
 
 button {
