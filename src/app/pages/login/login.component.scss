@@ -15,6 +15,7 @@ body {
   color: white;
   border-radius: 10px;
   padding: 30px 40px;
+  z-index: 9999;
 }
 
 .wrapper h1 {
@@ -90,6 +91,7 @@ body {
   color: #333;
   transition: ease-in-out all 0.1s;
   transform: scale(1);
+  margin-top: 30px;
 }
 
 .wrapper .submit-btn:active {
@@ -100,4 +102,38 @@ body {
   opacity: 0.3;
   transform: scale(1);
   cursor: not-allowed;
+}
+
+.moon {
+  top: 250px;
+  left: -100px;
+  position: fixed;
+  width: 3.5%;
+  animation: moon linear infinite;
+  animation-duration: 300s;
+  animation-delay: 0s;
+  transform: rotate(40deg);
+  pointer-events: none;
+}
+
+@keyframes moon {
+  0% {
+    transform: translateX(-10vw), translateY(1px) rotate(40deg);
+  }
+  25% {
+    transform: translateX(25vw) translateY(-50px) rotate(60deg);
+  }
+  50% {
+    transform: translateX(55vw) translateY(-100px) rotate(80deg);
+  }
+  75% {
+    transform: translateX(85vw) translateY(-50px) rotate(100deg);
+  }
+  90% {
+    transform: translateX(110vw) translateY(1px) rotate(120deg);
+  }
+  //delay after iteration
+  100% {
+    transform: translateX(110vw) translateY(1px) rotate(120deg);
+  }
 }
