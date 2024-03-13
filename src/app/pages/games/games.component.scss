@@ -7,3 +7,26 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 80vw;
+  gap: 20px;
+}
+
+.games {
+  min-width: 430px;
+  min-height: 130px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform .07s linear, filter .1s ease-out, opacity .15s linear;
+}
+.games:hover {
+  transform: scale(1.02);
+}
