@@ -30,7 +30,6 @@ export class AuthService {
       .then((userCredential) => {
         const user = userCredential.user;
         this.router.navigateByUrl('/home');
-        console.log(user);
       })
       .catch((error) => {
         const errorCode = error.code;
