@@ -2,6 +2,10 @@
 
 :root {
   --white: #faf9f6;
+  --gray: #a8bfc9;
+  --orange: #FFA500;
+  --cyan: #00FFFF;
+  --darkBlue: #1F3641;
 }
 
 body {
@@ -11,8 +15,8 @@ body {
   font-style: normal;
   background-image: url(/assets/stars_bg.png),
     linear-gradient(180deg, black 0%, #0f0e2e 100%);
-    z-index: -100;
-    user-select: none;
+  z-index: -100;
+  user-select: none;
 }
 
 button {
@@ -27,7 +31,7 @@ input::placeholder {
   font-style: normal;
 }
 
-.animate-btn{
+.animate-btn {
   transition: ease-in-out all 0.1s;
   transform: scale(1);
 }

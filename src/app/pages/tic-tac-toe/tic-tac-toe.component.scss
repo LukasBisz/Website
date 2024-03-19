@@ -51,7 +51,7 @@ select:focus-visible {
 }
 
 option {
-  background-color: rgb(31, 54, 65);
+  background-color: var(--darkBlue);
   font-family: "Roboto", sans-serif;
 }
 
@@ -81,7 +81,7 @@ option {
 .tile {
   width: 120px;
   height: 120px;
-  background-color: rgb(31, 54, 65);
+  background-color: var(--darkBlue);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,7 +98,7 @@ option {
   opacity: 0.2;
   content: "❌";
   color: transparent;
-  text-shadow: 0 0 0 aqua;
+  text-shadow: 0 0 0 var(--cyan);
 }
 
 .tile-hover-O:hover::after {
@@ -106,12 +106,12 @@ option {
   opacity: 0.3;
   content: "⭕";
   color: transparent;
-  text-shadow: 0 0 0 orange;
+  text-shadow: 0 0 0 var(--orange);
 }
 
 button {
-  background-color: rgb(31, 54, 65);
-  border: 1px solid rgb(31, 54, 65);
+  background-color: var(--darkBlue);
+  border: 1px solid var(--darkBlue);
   border-radius: 10px;
   border-bottom: 2px solid transparent;
   cursor: pointer;
@@ -128,7 +128,7 @@ button {
   width: 50%;
   height: 35px;
   color: transparent;
-  text-shadow: 0 0 0 aqua;
+  text-shadow: 0 0 0 var(--cyan);
   margin-right: 10px;
 }
 
@@ -152,17 +152,17 @@ button {
   padding-bottom: 2px;
   margin: 0;
   color: transparent;
-  text-shadow: 0 0 0 orange;
+  text-shadow: 0 0 0 var(--orange);
 }
 
 .X {
   color: transparent;
-  text-shadow: 0 0 0 aqua;
+  text-shadow: 0 0 0 var(--cyan);
 }
 
 .O {
   color: transparent;
-  text-shadow: 0 0 0 orange;
+  text-shadow: 0 0 0 var(--orange);
 }
 
 .tile-used {
@@ -231,7 +231,7 @@ button {
   align-items: center;
   justify-content: center;
   color: #1f3641;
-  background-color: #a8bfc9;
+  background-color: var(--gray);
   border: none;
   border-color: none;
   border-radius: 10px;
@@ -245,7 +245,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #a8bfc9;
+  background-color: var(--gray);
   border: none;
   border-color: none;
   border-radius: 10px;
