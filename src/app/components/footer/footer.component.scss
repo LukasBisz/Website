@@ -1,12 +1,19 @@
 .footer {
-  color: #7c7b7b;
   width: 100%;
   height: 20px;
-  bottom: 0;
+  bottom: 2px;
   position: fixed;
   background-color: transparent;
-  //background-color: #201e1e;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #7c7b7b;
+  cursor: pointer;
+  opacity: 0.5;
 }
