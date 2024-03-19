@@ -1,22 +1,23 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AiDifficultyService } from '../../services/ai-difficulty.service';
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-tic-tac-toe',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, NgClass],
   templateUrl: './tic-tac-toe.component.html',
   styleUrl: './tic-tac-toe.component.scss',
 })
 export class TicTacToeComponent {
   turnCount: number = 0;
   winner?: string;
-  draw: boolean = false;
   playerTurn: boolean = true;
   playerSymbol: string = '❌';
   aiSymbol: string = '⭕';
   selectedDifficulty: string = 'Medium';
+  hideGamePopUp: boolean = false
 
   board: string[][] = [
     ['', '', ''],
@@ -80,7 +81,6 @@ export class TicTacToeComponent {
     this.aiSymbol = '❌';
     this.playerTurn = false;
     this.checkDifficulty();
-    console.log(this.playerSymbol);
   }
 
   reset() {
@@ -88,11 +88,17 @@ export class TicTacToeComponent {
     this.playerTurn = true;
     this.playerSymbol = '❌';
     this.aiSymbol = '⭕';
+    delete this.winner;
+    this.hideGamePopUp = false
     this.board = [
       ['', '', ''],
       ['', '', ''],
       ['', '', ''],
     ];
+  }
+
+  resetBg(){
+    this.hideGamePopUp = true
   }
 
   clickTile(x: number, y: number) {
@@ -109,10 +115,10 @@ export class TicTacToeComponent {
     this.turnCount++;
     this.playerTurn = false;
     if (this.checkDraw()) {
-      this.draw = true;
+      this.winner = 'Draw';
     }
     if (this.checkWin(this.playerSymbol)) {
-      this.winner = 'Won';
+      this.winner = 'You Won';
       return;
     }
     this.checkDifficulty();
@@ -163,16 +169,18 @@ export class TicTacToeComponent {
       this.easyAi();
       return;
     }
-    this.board[y][x] = this.aiSymbol;
-    this.turnCount++;
-    if (this.checkDraw()) {
-      this.draw = true;
-    }
-    if (this.checkWin(this.aiSymbol)) {
-      this.winner = 'Lost';
-      return;
-    }
-    this.playerTurn = true;
+    setTimeout(() => {
+      this.board[y][x] = this.aiSymbol;
+      this.turnCount++;
+      if (this.checkDraw()) {
+        this.winner = 'Draw';
+      }
+      if (this.checkWin(this.aiSymbol)) {
+        this.winner = 'You Lost';
+        return;
+      }
+      this.playerTurn = true;
+    }, 400);
   }
 
   mediumAi() {
@@ -182,16 +190,17 @@ export class TicTacToeComponent {
     const position = this.aiDifficulty.medium(this.board);
     const y = position[0];
     const x = position[1];
-    console.log(this.aiDifficulty.medium(this.board));
-    this.board[y][x] = this.aiSymbol;
-    this.turnCount++;
-    if (this.checkDraw()) {
-      this.draw = true;
-    }
-    if (this.checkWin(this.aiSymbol)) {
-      this.winner = 'Lost';
-      return;
-    }
-    this.playerTurn = true;
+    setTimeout(() => {
+      this.board[y][x] = this.aiSymbol;
+      this.turnCount++;
+      if (this.checkDraw()) {
+        this.winner = 'Draw';
+      }
+      if (this.checkWin(this.aiSymbol)) {
+        this.winner = 'You Lost';
+        return;
+      }
+      this.playerTurn = true;
+    }, 400);
   }
 }
