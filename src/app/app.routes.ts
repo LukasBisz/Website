@@ -10,7 +10,6 @@ import {
   redirectLoggedInTo,
   redirectUnauthorizedTo,
 } from '@angular/fire/auth-guard';
-import { PrivacyComponent } from './pages/privacy/privacy.component';
 
 const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
 const redirectUnauthorizedToHome = () => redirectUnauthorizedTo(['home']);
@@ -41,10 +40,6 @@ export const routes: Routes = [
     component: CvComponent,
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToHome },
-  },
-  {
-    path: 'privacy',
-    component: PrivacyComponent,
   },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
