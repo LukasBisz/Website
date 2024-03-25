@@ -2,7 +2,7 @@
   <div class="ticTacToe">
     @if (winner && hideGamePopUp === false) {
     <div class="popUp-bg" (click)="resetBg()">
-      <div class="popUp">
+      <div class="popUp" (click)="$event.stopPropagation()">
         {{ winner }}
         <button class="playAgain animate-btn" (click)="reset()">
           Play Again?
