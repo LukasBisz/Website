@@ -9,7 +9,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements AfterViewInit {
-  text: string[] = ["Hey, my name is Lukas", 'Hey, mein Name ist Lukas'];
+  text: string[] = ['Hey, my name is Lukas', 'Hey, mein Name ist Lukas'];
   color: string[] = ['#FAF9F6'];
   currentIndex: number = 0;
   sleepTime: number = 100;

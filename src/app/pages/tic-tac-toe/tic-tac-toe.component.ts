@@ -17,7 +17,7 @@ export class TicTacToeComponent {
   playerSymbol: string = '❌';
   aiSymbol: string = '⭕';
   selectedDifficulty: string = 'Medium';
-  hideGamePopUp: boolean = false
+  hideGamePopUp: boolean = false;
 
   board: string[][] = [
     ['', '', ''],
@@ -89,7 +89,7 @@ export class TicTacToeComponent {
     this.playerSymbol = '❌';
     this.aiSymbol = '⭕';
     delete this.winner;
-    this.hideGamePopUp = false
+    this.hideGamePopUp = false;
     this.board = [
       ['', '', ''],
       ['', '', ''],
@@ -97,8 +97,8 @@ export class TicTacToeComponent {
     ];
   }
 
-  resetBg(){
-    this.hideGamePopUp = true
+  resetBg() {
+    this.hideGamePopUp = true;
   }
 
   clickTile(x: number, y: number) {
