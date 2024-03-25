@@ -20,11 +20,13 @@ body {
   min-height: 130px;
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
   color: white;
   border-radius: 10px;
   text-align: center;
   user-select: none;
   transition: transform 0.07s linear, filter 0.1s ease-out, opacity 0.15s linear;
+  cursor: pointer;
 }
 .games:hover {
   transform: scale(1.02);
