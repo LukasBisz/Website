@@ -1,13 +1,44 @@
-<div class="cps">
-  <button class="clicker" (click)="startCps()" [disabled]="countdown == 0">
-    click here
-  </button>
-  <div class="output">
-    <div class="counter">{{ count }}</div>
-    <div class="countdown">{{ countdown / 100 }}</div>
-    <div>{{ cps() }}</div>
-    @if (countdown == 0) {
-    <button class="reset" (click)="reset()">restart</button>
+<body>
+  <div class="wrapper">
+    @if (gameEnded == true && hideGamePopUp === false) {
+    <div class="popUp-bg" (click)="resetBg()">
+      <div class="popUp" (click)="$event.stopPropagation()">
+        You clicked
+        <div class="clickSpeedText">{{ clickSpeed }}</div>
+        times per second!
+        <button class="playAgain animate-btn" [disabled]="!popUpCloseable" (click)="reset()">
+          Play Again?
+        </button>
+      </div>
+    </div>
     }
+    <div class="cps">
+      <div class="output">
+        <div class="bg timer">
+          <div class="number">{{ timerTotal }}s</div>
+          <p class="title">Timer</p>
+        </div>
+        <div class="bg clicks">
+          <div class="number">{{ clickSpeed }}</div>
+          <p class="title">Click/s</p>
+        </div>
+        <div class="bg score">
+          <div class="number">{{ score }}</div>
+          <p class="title">Score</p>
+        </div>
+      </div>
+      <div class="cps-btn">
+        <button class="clicker" (click)="startCps()">
+          @if (gameActiv) {
+          <div class="activ">Click!!!</div>
+          }@else if (gameEnded) {
+          <div class="default">Click to try again</div>
+          }@else {
+          <div class="default">Click here to start the Game</div>
+          <div class="subtext">(this Game runs for 5 seconds)</div>
+          }
+        </button>
+      </div>
+    </div>
   </div>
-</div>
+</body>

@@ -8,43 +8,66 @@ import { Component } from '@angular/core';
   styleUrl: './cps.component.scss',
 })
 export class CpsComponent {
-  count: number = 0;
-  countdown: number = 500;
-  timer: any;
-  timerActiv: boolean = false;
+  score: number = 0;
+  timerDuration: number = 5;
+  timerTotal: string = '0';
+  clickSpeed: string = '0';
+  gameActiv: boolean = false;
+  gameEnded: boolean = false;
+  hideGamePopUp: boolean = false;
+  popUpCloseable: boolean = false;
 
   startCps() {
+    if (this.gameEnded == true) {
+      this.reset();
+      return;
+    }
     this.clickCount();
-    this.startTimer();
+    if (this.gameActiv === false) {
+      this.startTimer();
+    }
   }
 
-  clickCount(): void {
-    this.count++;
+  clickCount() {
+    this.score++;
   }
 
   startTimer() {
-    if (this.timerActiv == true) {
-      return;
-    }
-    this.timerActiv = true;
-    this.countdown = 500;
-    this.timer = setInterval(() => {
-      this.countdown--;
-      if (this.countdown === 0) {
-        clearInterval(this.timer);
-      }
-    }, 10);
-  }
+    this.gameActiv = true;
+    var startTime = new Date().getTime();
 
-  cps(): any {
-    var Calcualtion = this.count / 5;
-    //if (this.timerActiv == true)
-    return Calcualtion;
+    var timer = setInterval((): any => {
+      var total = (new Date().getTime() - startTime) / 1000;
+
+      if (total < this.timerDuration) {
+        this.timerTotal = total.toFixed(2);
+        this.clickSpeed = (this.score / total).toFixed(2);
+      } else {
+        this.gameActiv = false;
+        this.gameEnded = true;
+        setTimeout(() => {
+          this.popUpCloseable = true;
+        }, 1500);
+        clearInterval(timer);
+      }
+    }, 1);
   }
 
   reset(): any {
-    this.count = 0;
-    this.countdown = 500;
-    this.timerActiv = false;
+    if (this.popUpCloseable == false) {
+      return;
+    }
+    this.score = 0;
+    this.timerTotal = '0.00';
+    this.clickSpeed = '0.00';
+    this.gameActiv = false;
+    this.gameEnded = false;
+  }
+
+  resetBg() {
+    if (this.popUpCloseable == false) {
+      return;
+    }
+    this.hideGamePopUp = true;
   }
 }
