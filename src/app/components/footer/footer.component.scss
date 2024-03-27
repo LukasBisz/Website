@@ -1,0 +1,19 @@
+.footer {
+  width: 100%;
+  height: 20px;
+  bottom: 2px;
+  position: fixed;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #7c7b7b;
+  cursor: pointer;
+  opacity: 0.5;
+}
