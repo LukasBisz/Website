@@ -1,0 +1,41 @@
+.header {
+  z-index: 10000;
+  position: fixed;
+  width: 100%;
+  background-color: transparent;
+  height: 77px;
+  display: flex;
+  justify-content: right;
+}
+
+.navbar {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: right;
+  flex-direction: row-reverse;
+}
+
+li {
+  margin: 15px;
+  font-size: 1.4em;
+  justify-content: end;
+  float: right;
+  list-style-type: none;
+}
+
+.navbar-item {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.navbar-item:hover {
+  color: #40e0d0;
+}
+
+.navbar-item-active {
+  color: #40e0d0;
+}
