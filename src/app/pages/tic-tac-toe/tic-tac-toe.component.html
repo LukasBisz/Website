@@ -61,7 +61,7 @@
             O: tile === '⭕',
             'tile-hover-X': !tile && playerSymbol === '❌' && !winner && playerTurn,
             'tile-hover-O': !tile && playerSymbol === '⭕' && !winner && playerTurn,
-            'tile-used': tile && playerSymbol === ('❌' || '⭕'),
+            'tile-used': tile && ['❌', '⭕'].includes(playerSymbol),
             'tile-after-game': hideGamePopUp === true,
           }"
         >

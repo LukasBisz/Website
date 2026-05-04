@@ -4,11 +4,10 @@ import { AiDifficultyService } from '../../services/ai-difficulty.service';
 import { NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-tic-tac-toe',
-  standalone: true,
-  imports: [FormsModule, NgClass],
-  templateUrl: './tic-tac-toe.component.html',
-  styleUrl: './tic-tac-toe.component.scss',
+    selector: 'app-tic-tac-toe',
+    imports: [FormsModule, NgClass],
+    templateUrl: './tic-tac-toe.component.html',
+    styleUrl: './tic-tac-toe.component.scss'
 })
 export class TicTacToeComponent {
   turnCount: number = 0;

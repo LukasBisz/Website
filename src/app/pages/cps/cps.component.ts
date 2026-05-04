@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-cps',
-  standalone: true,
-  imports: [],
-  templateUrl: './cps.component.html',
-  styleUrl: './cps.component.scss',
+    selector: 'app-cps',
+    imports: [],
+    templateUrl: './cps.component.html',
+    styleUrl: './cps.component.scss'
 })
 export class CpsComponent {
   score: number = 0;
